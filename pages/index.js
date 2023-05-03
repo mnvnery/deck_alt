@@ -23,6 +23,7 @@ export default function Index() {
     });
     const [formData, setFormData] = useState({});
     const [step, setStep] = useState(1)
+    const [sizeData, SetSizeData] = useState(null)
 
     const handleNextStep = () => {
         setStep(step + 1)
@@ -39,12 +40,14 @@ export default function Index() {
 
     function handleSize(data) {
         //setFormData(data)
-        sendMessage("[Bridge]", "SetSizeData", JSON.stringify(data));
-        console.log(data)
+        if (isLoaded) {
+            sendMessage("[Bridge]", "SetSizeData", JSON.stringify(data));
+        }
+        SetSizeData(JSON.stringify(data));
     }
 
     function handleGarments() {
-        // sendMessage("[Bridge]", "SetSizeData", formData);
+        sendMessage("[Bridge]", "SetSizeData", sizeData);
         sendMessage("[Bridge]", "ShowGarments");
     }
 
