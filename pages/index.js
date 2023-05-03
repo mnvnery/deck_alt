@@ -40,6 +40,7 @@ export default function Index() {
     function handleSize(data) {
         //setFormData(data)
         sendMessage("[Bridge]", "SetSizeData", JSON.stringify(data));
+        console.log(data)
     }
 
     function handleGarments() {
