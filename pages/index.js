@@ -66,7 +66,7 @@ export default function Index() {
         <Head>
             <title>The Deck Configurator</title>
             <meta name="description" content="The Deck Configurator" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
             <link rel="icon" href="/favicon.ico" />
         </Head>
         {step === 1 ?
