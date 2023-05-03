@@ -97,7 +97,7 @@ export default function Index() {
         {step === 5 && <SillouettePage />}
         {step === 6 && <ProductPage onNextStep={handleNextStep} start={handleGarments} pose={handlePose}/>}
         {step === 7 && <FabricPage onNextStep={handleNextStep} handleJacket={handleJacket} handleTrousers={handleTrousers}/>}   
-        {step === 8 && <CheckoutPage />}
+        {step === 8 && <CheckoutPage handlePrev={handlePrevStep}/>}
         {step > 2 && step < 8 &&
         <div className='flex justify-between items-center mr-14 absolute bottom-0 pt-2 pb-2 md:pb-7 w-full px-3 md:px-7 z-[99999999] bg-charcoal text-beige md:text-charcoal md:bg-transparent'>
             <div onClick={handlePrevStep}>
