@@ -166,22 +166,22 @@ const BaseInfoPage = ({onNextStep, onPrevStep, handleSize}) => {
             <motion.div initial={{x: -100}} whileInView={{x:0}} transition={{stiffness: 50, duration: 0.7}} className='relative w-[50vw] h-screen z-0 hidden lg:block'>
             <Image src='/bg-img.webp' fill className='object-cover' />
             </motion.div>
-        <div className='bg-beige flex justify-center items-center mt-28 mb-52 px-7 lg:pt-0 md:px-24'>
+        <div className='bg-beige flex justify-center items-center mt-32 mb-48 px-7 lg:pt-0 md:px-24'>
             <motion.div initial={{y:100, opacity:0}} whileInView={{y:0, opacity:1}} transition={{stiffness: 50, duration: 0.7}} >
             <div className='mb-3'>ENTER YOUR BASE INFORMATION</div>
             <div className='text-sm'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper bibendum dui, nec condimentum quam dignissim in.</div>
             <form action="/send-data-here" method="post">
-                <div className='grid md:grid-cols-2 mt-10 gap-8'>
+                <div className='grid md:grid-cols-2 mt-10 gap-8 md:mb-10'>
                 <div>
-                <label htmlFor="first">NAME</label><br/>
+                <label className='text-sm md:text-base' htmlFor="first">NAME</label><br/>
                 <input onChange={(e) => setName(e.target.value)} type="text" id="first" name="first" className='bg-transparent border-b border-charcoal mt-3 text-sm py-2 w-full'/>
                 </div>
                 <div>
-                <label htmlFor="last">AGE</label><br/>
+                <label className='text-sm md:text-base' htmlFor="last">AGE</label><br/>
                 <input onChange={(e) => setAge(e.target.value)} type="text" id="last" name="last" className='bg-transparent border-b border-charcoal mt-3 text-sm py-2 w-full'/>
                 </div>
                 <div>
-                    <label htmlFor="height">HEIGHT</label><br />
+                    <label className='text-sm md:text-base' htmlFor="height">HEIGHT</label><br />
                     <div className="grid grid-cols-[70%_30%]">
                     <input
                         type="text"
@@ -204,7 +204,7 @@ const BaseInfoPage = ({onNextStep, onPrevStep, handleSize}) => {
                     </div>
                 </div>
                 <div>
-                    <label htmlFor="weight">WEIGHT</label><br />
+                    <label className='text-sm md:text-base' htmlFor="weight">WEIGHT</label><br />
                     <div className="grid grid-cols-[70%_30%]">
                     <input
                         type="text"
