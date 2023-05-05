@@ -40,7 +40,7 @@ const SuitPage = () => {
     return (
         <>
         <Header fill='#2F2727'/>
-        {isImageReady < 4 && <Loader text='Generating Measurements' progress={false}/>}
+        {!isImageReady && <Loader text='Generating Measurements' progress={false}/>}
         <div className='h-screen flex flex-col justify-center md:hidden relative z-10 bg-beige'>
         <div className='uppercase mb-5 text-sm pl-7'>Select your suit</div>
         <EmblaCarousel>
