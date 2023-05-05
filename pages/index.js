@@ -46,6 +46,7 @@ export default function Index() {
     function handleSize(data) {
         //setFormData(data)
         if (isLoaded) {
+            // sendMessage("[Bridge]", "ChangeQuality", 2);
             sendMessage("[Bridge]", "SetSizeData", JSON.stringify(data));
         }
         SetSizeData(JSON.stringify(data));
