@@ -60,7 +60,7 @@ const ChosenProduct = ({handleClick, pose}) => {
             <div className="pt-5 md:px-9 md:pt-9">
             <div>{getTextByNumber(chosenSet)}</div>
             <div className="text-end text-sm font-bold">£{price}</div>
-            <div className="mt-3 md:mt-7 border-t  border-charcoal/25 py-7 text-xs h-[30vh] md:h-[20vh] overflow-y-scroll pr-4">
+            <div className="mb-4 md:mb-0 mt-3 md:mt-7 border-t  border-charcoal/25 py-7 text-xs h-[30vh] md:h-[20vh] overflow-y-scroll pr-4">
                 {[0,1,2].includes(chosenSet) &&
                 <>
                     <div className="mb-3 uppercase">{chosenJacket.title}</div>

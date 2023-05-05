@@ -83,6 +83,8 @@ const FabricPage = ({onNextStep, handleTrousers, handleJacket}) => {
         };
         fetchData();
     }, []);
+
+    
     return (
         <>
         <div className="h-screen w-screen pointer-events-none justify-end items-center p-7 hidden md:flex relative z-10">
@@ -109,7 +111,7 @@ const FabricPage = ({onNextStep, handleTrousers, handleJacket}) => {
         ref={ref}
         isOpen={isOpen}
         onClose={() => snapTo(1)}
-        snapPoints={[600, 200, 0]}
+        snapPoints={[600, 150, 0]}
         initialSnap={1}
         className='md:hidden'
         onSnap={snapIndex =>

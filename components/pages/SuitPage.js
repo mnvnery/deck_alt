@@ -42,7 +42,7 @@ const SuitPage = ({handleProduct}) => {
         <>
         <Header fill='#2F2727'/>
         {!isImageReady && <Loader text='Generating Measurements' progress={false}/>}
-        <div className='h-screen flex flex-col justify-center md:hidden relative z-10 bg-beige overflow-y-hidden'>
+        <div className='h-[90vh] flex flex-col justify-center md:hidden relative z-10 bg-beige overflow-y-hidden'>
         <div className='uppercase mb-5 text-sm pl-7'>Select your suit</div>
         <EmblaCarousel>
             {products.map((product, index) => (
@@ -54,6 +54,7 @@ const SuitPage = ({handleProduct}) => {
                 isChecked={index === selected}
                 handleCardClick={() => handleCardClick(index)}
                 cardOpacity={opacity[index]}
+                imageLoad={imageLoad}
                 />
                 </div>
             ))}

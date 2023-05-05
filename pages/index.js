@@ -25,13 +25,61 @@ export default function Index() {
     const [step, setStep] = useState(1)
     const [sizeData, SetSizeData] = useState(null)
     const [productNumber, setProductNumber] = useState(null);
+    const [jacketFabricChosen, setJacketFabricChosen] = useState(false);
+    const [trouserFabricChosen, setTrouserFabricChosen] = useState(false)
+    const [selectedJacket, setSelectedJacket] = useState(false);
+    const [selectedTrousers, setSelectedTrousers] = useState(false);
+    const [selectedWaistcoat, setSelectedWaistcoat] = useState(false);
 
     const handleProduct = (data) => {
         setProductNumber(data)
     }
 
+    const selectJacket = (data) => {
+        setSelectedJacket(data)
+    }
+
+    const selectTrousers = (data) => {
+        setSelectedTrousers(data)
+    }
+
+    const selectWaistcoat = (data) => {
+        setSelectedWaistcoat(data)
+    }
+
+
     const handleNextStep = () => {
-        setStep(step + 1)
+        if (step === 7) {
+            if ([0, 1].includes(productNumber) && jacketFabricChosen && trouserFabricChosen) {
+                setStep(step + 1)
+            } else if (productNumber === 2 && jacketFabricChosen) {
+                setStep(step + 1)
+            } else if (productNumber === 3 && trouserFabricChosen) {
+                setStep(step + 1)
+            } else {
+                alert('Please make your fabric selection!')
+            }
+        } else if (step === 5) {
+            if (productNumber === 0 && selectedJacket && selectedTrousers && selectedWaistcoat) {
+                setStep(step + 1)
+            } else if (productNumber === 1 && selectedJacket && selectedTrousers) {
+                setStep(step + 1)
+            } else if (productNumber === 2 && selectedJacket) {
+                setStep(step + 1)
+            } else if (productNumber === 3 && selectedTrousers) {
+                setStep(step + 1)
+            } else {
+                alert('Please make your sillouette selection!')
+            }
+        } else if (step === 4) {
+            if (productNumber !== null) {
+                setStep(step + 1)
+            } else {
+                alert('Please make your suit type selection!')
+            }
+        } else {
+            setStep(step + 1)
+        }
     }
 
     const resetSteps = () => {
@@ -63,10 +111,12 @@ export default function Index() {
 
     function handleJacket(num) {
         sendMessage("[Bridge]", "ChangeOuterFabricJacket", `${num}`);
+        setJacketFabricChosen(true)
     }
 
     function handleTrousers(num) {
         sendMessage("[Bridge]", "ChangeOuterFabricTrousers", `${num}`);
+        setTrouserFabricChosen(true);
     }
 
 
@@ -104,7 +154,7 @@ export default function Index() {
         {step === 2 && <BaseInfoPage onPrevStep={handlePrevStep} onNextStep={handleNextStep} handleSize={handleSize}/>}
         {step === 3 && <DetailsPage onPrevStep={handlePrevStep} handleSize={handleSize}/>}
         {step === 4 && <SuitPage handleProduct={handleProduct}/>}
-        {step === 5 && <SillouettePage />}
+        {step === 5 && <SillouettePage selectJacket={selectJacket} selectTrousers={selectTrousers} selectWaistcoat={selectWaistcoat} />}
         {step === 6 && <ProductPage onNextStep={handleNextStep} start={handleGarments} pose={handlePose}/>}
         {step === 7 && <FabricPage onNextStep={handleNextStep} handleJacket={handleJacket} handleTrousers={handleTrousers}/>}   
         {step === 8 && <CheckoutPage handlePrev={handlePrevStep}/>}
