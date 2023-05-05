@@ -33,7 +33,7 @@ const Loader = ({text, progress}) => {
                     }}
                     d="M0 33.7136C22.5 33.7136 47.1027 11.0849 29.9997 2.02554C14.5 -6.18453 2.34371 37.7182 38.9891 33.7136C63.5 31.035 89 -5.63724 105.633 20.0762C134.695 65.0058 179.078 25.2848 187 14.1099" stroke="#2F2727"/>
             </motion.svg>
-            <div className="text-xs">{progress}%</div>
+            {progress !== false && <div className="text-xs">{progress}%</div>}
         </div>
     )
 }
