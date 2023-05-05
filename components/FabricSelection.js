@@ -24,7 +24,6 @@ const FabricSelection = ({productData, productType, click, handleTrousers, handl
         {handleTrousers && handleTrousers(Math.floor(Math.random() * 6))}
         {handleJacket && handleJacket(Math.floor(Math.random() * 6))}
     };
-    console.log(productType)
     return (
         <div className="bg-beige rounded-b-xl md:shadow-xl">
             <div className="md:px-9 pt-4 md:pt-5">

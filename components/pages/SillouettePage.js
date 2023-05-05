@@ -8,7 +8,7 @@ import ButtonNoLink from '@/components/ButtonNoLink'
 import SizeCalc from '@/components/SizeCalc'
 import Loader from '../Loader'
 
-const SillouettePage = () => {
+const SillouettePage = ({selectJacket, selectTrousers, selectWaistcoat}) => {
     const [selectedJacket, setSelectedJacket] = useState(null);
     const [selectedTrousers, setSelectedTrousers] = useState(null);
     const [selectedWaistcoat, setSelectedWaistcoat] = useState(null);
@@ -98,17 +98,20 @@ const SillouettePage = () => {
         setSelectedJacket(index);
         setJacketOpacity(jacketOpacity.map((o, i) => (i === index ? 1 : 0.5)));
         sessionStorage.setItem("jacket", index !== null ? JSON.stringify(jackets[index]) : null);
+        selectJacket(true);
     };
 
     const handleTrousersClick = (index) => {
         setSelectedTrousers(index);
         setTrousersOpacity(trousersOpacity.map((o, i) => (i === index ? 1 : 0.5)));
         sessionStorage.setItem("trousers", index !== null ? JSON.stringify(trousers[index]) : null);
+        selectTrousers(true);
     };
     const handleWaistcoatClick = (index) => {
         setSelectedWaistcoat(index);
         setWaistcoatOpacity(waistcoatOpacity.map((o, i) => (i === index ? 1 : 0.5)));
         sessionStorage.setItem("waistcoat", index !== null ? JSON.stringify(waistcoat[index]) : null);
+        selectWaistcoat(true);
     };
 
     const handleClick = () => {

@@ -83,6 +83,8 @@ const FabricPage = ({onNextStep, handleTrousers, handleJacket}) => {
         };
         fetchData();
     }, []);
+
+    
     return (
         <>
         <div className="h-screen w-screen pointer-events-none justify-end items-center p-7 hidden md:flex relative z-10">

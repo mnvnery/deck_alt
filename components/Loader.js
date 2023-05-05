@@ -18,7 +18,7 @@ const pathVariants = {
 
 const Loader = ({text, progress}) => {
     return (
-        <div className="h-screen w-screen relative flex flex-col items-center justify-center text-center bg-beige z-20">
+        <div className="h-screen w-screen fixed top-0 left-0 overflow-x-hidden flex flex-col items-center justify-center text-center bg-beige z-20">
             <div className="font-editorial text-4xl mb-5">{text}</div>
             <motion.svg width="188" height="42" viewBox="0 0 188 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <motion.path 
