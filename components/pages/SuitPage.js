@@ -5,6 +5,7 @@ import ButtonNoLink from '@/components/ButtonNoLink'
 import { useRouter } from 'next/router'
 import { EmblaCarousel } from '@/components/Embla'
 import Header from "../Header"
+import Loader from '../Loader'
 
 
 
@@ -13,6 +14,8 @@ const SuitPage = () => {
     const router = useRouter();
     const [selected, setSelected] = useState(null);
     const [opacity, setOpacity] = useState([1, 1, 1, 1]);
+    const [isImageReady, setIsImageReady] = useState(false);
+
         
     const handleCardClick = (index) => {
         setSelected(index);
@@ -26,10 +29,15 @@ const SuitPage = () => {
         {img: '/safari.webp', title:'Jacket'}, 
         {img:'/trousers.webp', title:'Trousers'},
     ]
-    
+
+    const imageLoad = (e)=>{
+        setIsImageReady(true)
+        typeof onLoad === "function" && onLoad(e)
+    }
     return (
         <>
         <Header fill='#2F2727'/>
+        {!isImageReady && <Loader text='Generating Measurements' progress={false}/>}
         <div className='h-screen flex flex-col justify-center md:hidden relative z-10 bg-beige'>
         <div className='uppercase mb-5 text-sm pl-7'>Select your suit</div>
         <EmblaCarousel>
@@ -42,6 +50,7 @@ const SuitPage = () => {
                 isChecked={index === selected}
                 handleCardClick={() => handleCardClick(index)}
                 cardOpacity={opacity[index]}
+                imageLoad={imageLoad}
                 />
                 </div>
             ))}

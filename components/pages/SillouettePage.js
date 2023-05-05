@@ -2,10 +2,11 @@ import Head from 'next/head'
 import Header from '@/components/Header'
 import Link from 'next/link'
 import ProductCard from '@/components/ProductCard'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import Waistcoast from '@/components/Waistcoast'
 import ButtonNoLink from '@/components/ButtonNoLink'
 import SizeCalc from '@/components/SizeCalc'
+import Loader from '../Loader'
 
 const SillouettePage = () => {
     const [selectedJacket, setSelectedJacket] = useState(null);
@@ -19,6 +20,7 @@ const SillouettePage = () => {
     const [trousers, setTrousers] = useState([]);
     const [waistcoat, setwaistcoat] = useState([]);
     const [productNumber, setProductNumber] = useState(0);
+    const [isImageReady, setIsImageReady] = useState(false);
 
     useEffect(() => {
         const chosenSet = sessionStorage.getItem("chosenSet"); 
@@ -116,8 +118,14 @@ const SillouettePage = () => {
             return;
         }
     };
+
+    const imageLoad = (e)=>{
+        setIsImageReady(true)
+        typeof onLoad === "function" && onLoad(e)
+    }
     return (
         <>
+        {!isImageReady && <Loader text='Generating Measurements' progress={false}/>}
         <div className="h-screen w-screen flex justify-center px-7 pt-[20vh] overflow-y-scroll relative z-10 bg-beige">
             <div>
                 <div className='uppercase mb-5 text-sm border-b pb-2'>Select your silhouette</div>
@@ -134,6 +142,7 @@ const SillouettePage = () => {
                         isChecked={index === selectedJacket}
                         handleCardClick={() => handleJacketClick(index)}
                         cardOpacity={jacketOpacity[index]}
+                        imageLoad={imageLoad}
                         />
                     ))}
                 </div>
@@ -152,6 +161,7 @@ const SillouettePage = () => {
                         isChecked={index === selectedTrousers}
                         handleCardClick={() => handleTrousersClick(index)}
                         cardOpacity={trousersOpacity[index]}
+                        imageLoad={imageLoad}
                         />
                     ))}
                 </div>
@@ -170,6 +180,7 @@ const SillouettePage = () => {
                             isChecked={index === selectedWaistcoat}
                             handleCardClick={() => handleWaistcoatClick(index)}
                             cardOpacity={waistcoatOpacity[index]}
+                            imageLoad={imageLoad}
                             />
                         ))}
                     </div>
@@ -180,7 +191,7 @@ const SillouettePage = () => {
         </div>
         <div className={isOpen ? 'block' : 'hidden'}>
             <Waistcoast href='/product-view'/>
-        </div>
+        </div> 
         </>
     )
 }
