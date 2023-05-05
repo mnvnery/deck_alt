@@ -24,7 +24,7 @@ const DetailsPage = ({handleSize, onPrevStep}) => {
         ref={ref}
         isOpen={isOpen}
         onClose={() => snapTo(1)}
-        snapPoints={[600, 200, 0]}
+        snapPoints={[600, 150, 0]}
         initialSnap={1}
         className='md:hidden'
         onSnap={snapIndex =>
