@@ -108,7 +108,7 @@ export default function Index() {
         {step === 7 && <FabricPage onNextStep={handleNextStep} handleJacket={handleJacket} handleTrousers={handleTrousers}/>}   
         {step === 8 && <CheckoutPage handlePrev={handlePrevStep}/>}
         {step > 2 && step < 8 &&
-        <div className='flex justify-between items-center mr-14 absolute bottom-0 pt-2 pb-2 md:pb-7 w-full px-3 md:px-7 z-[99999999] bg-charcoal text-beige md:text-charcoal md:bg-transparent'>
+        <div className='flex justify-between items-center mr-14 fixed bottom-0 pt-2 pb-2 md:pb-7 w-full px-3 md:px-7 z-[99999999] bg-charcoal text-beige md:text-charcoal md:bg-transparent'>
             <div onClick={handlePrevStep}>
             <svg width="50" height="37" viewBox="0 0 50 37" fill="none" xmlns="http://www.w3.org/2000/svg" className={`ml-4 w-7 rotate-180 ${step === 2 ? 'stroke-beige' : 'stroke-beige md:stroke-charcoal'}`}>
                 <path d="M31.25 0.5C31.25 0.5 34.3071 18.5 50 18.5" stroke-width="2" stroke-miterlimit="10"/>
