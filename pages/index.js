@@ -16,14 +16,19 @@ import CheckoutPage from '@/components/pages/CheckoutPage'
 
 export default function Index() {
     const { unityContext, unityProvider, sendMessage, addEventListener, removeEventListener, isLoaded, loadingProgression } = useUnityContext({
-        loaderUrl: '/unity/Build/TheDeckModelViewer_GzipTest.loader.js',
-        dataUrl: '/unity/Build/TheDeckModelViewer_GzipTest.data.gz',
-        frameworkUrl: '/unity/Build/TheDeckModelViewer_GzipTest.framework.js.gz',
-        codeUrl: '/unity/Build/TheDeckModelViewer_GzipTest.wasm.gz',
+        loaderUrl: '/unity/Build/TheDeckModelViewer.loader.js',
+        dataUrl: '/unity/Build/TheDeckModelViewer.data',
+        frameworkUrl: '/unity/Build/TheDeckModelViewer.framework.js',
+        codeUrl: '/unity/Build/TheDeckModelViewer.wasm',
     });
     const [formData, setFormData] = useState({});
     const [step, setStep] = useState(1)
     const [sizeData, SetSizeData] = useState(null)
+    const [productNumber, setProductNumber] = useState(null);
+
+    const handleProduct = (data) => {
+        setProductNumber(data)
+    }
 
     const handleNextStep = () => {
         setStep(step + 1)
@@ -97,7 +102,7 @@ export default function Index() {
         {step === 1 && <Home onNextStep={handleNextStep} />}
         {step === 2 && <BaseInfoPage onPrevStep={handlePrevStep} onNextStep={handleNextStep} handleSize={handleSize}/>}
         {step === 3 && <DetailsPage onPrevStep={handlePrevStep} handleSize={handleSize}/>}
-        {step === 4 && <SuitPage />}
+        {step === 4 && <SuitPage handleProduct={handleProduct}/>}
         {step === 5 && <SillouettePage />}
         {step === 6 && <ProductPage onNextStep={handleNextStep} start={handleGarments} pose={handlePose}/>}
         {step === 7 && <FabricPage onNextStep={handleNextStep} handleJacket={handleJacket} handleTrousers={handleTrousers}/>}   

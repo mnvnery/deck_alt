@@ -10,7 +10,7 @@ import Loader from '../Loader'
 
 
 
-const SuitPage = () => {
+const SuitPage = ({handleProduct}) => {
     const router = useRouter();
     const [selected, setSelected] = useState(null);
     const [opacity, setOpacity] = useState([1, 1, 1, 1]);
@@ -21,6 +21,7 @@ const SuitPage = () => {
         setSelected(index);
         setOpacity(opacity.map((o, i) => (i === index ? 1 : 0.5)));
         sessionStorage.setItem("chosenSet", index);
+        handleProduct(index);
     };
     console.log(opacity);
     const products =  [
